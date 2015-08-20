@@ -1,0 +1,45 @@
+# Ignore file for VS
+
+# use glog syntax
+syntax: glob
+
+# Files wildcards
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*._i.c
+*._p.c
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ncb
+*.log
+*.ilk
+*.sbr
+*.scc
+*.DS_Store
+*.resharper
+*.suo
+*.vs10x
+*.gp[Ss]tate
+*.docstates
+*.nupkg
+[Tt]humbs.db
+[Bb]uild
+[Bb]in
+[Db]ebug*/
+.git/
+[Oo]bj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+[Bb]uild[Ll]og.*
+*.[Pp]ublish.xml
+testimpactdata.sdf
+*.ncrunch*
