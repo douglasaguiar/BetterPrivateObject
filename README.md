@@ -15,7 +15,7 @@ You just have to do this:
 
 ```csharp
 [TestMethod]
-public void InvokePrivateVoidMethodWithParameter()
+public void TestPrivateMethod()
 {
 	dynamic subjectPO = new PrivateObject<Subject>();
 
