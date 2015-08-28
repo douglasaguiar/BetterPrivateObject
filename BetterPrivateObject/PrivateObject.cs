@@ -24,7 +24,7 @@ namespace BetterPrivateObject
 
 		public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result)
 		{
-			MethodInfo method = typeof(T).GetMethod(binder.Name, BindingFlags.NonPublic | BindingFlags.Instance);
+			MethodInfo method = typeof(T).GetMethod(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
 			if (method == null)
 			{
