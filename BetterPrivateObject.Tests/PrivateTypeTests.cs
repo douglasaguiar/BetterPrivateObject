@@ -52,6 +52,26 @@ namespace BetterPrivateObject.Tests
         }
 
         [TestMethod]
+        public void GetPrivateStaticPropertyValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            bool actual = subjectPO.privateStaticProperty;
+
+            Assert.IsFalse(actual);
+        }
+
+        [TestMethod]
+        public void SetPrivateStaticPropertyValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            subjectPO.privateStaticProperty = true;
+
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
         public void InvokePublicMethodThatReturnsBoolean()
         {
             dynamic subjectPO = new PrivateType<Subject>();
@@ -90,6 +110,26 @@ namespace BetterPrivateObject.Tests
 
             Assert.IsTrue(true);
         }
+        
+        [TestMethod]
+        public void GetPublicStaticPropertyValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            bool actual = subjectPO.publicStaticProperty;
+
+            Assert.IsFalse(actual);
+        }
+
+        [TestMethod]
+        public void SetPublicStaticPropertyValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            subjectPO.publicStaticProperty = true;
+
+            Assert.IsTrue(true);
+        }
 
         public class Subject
         {
@@ -101,6 +141,8 @@ namespace BetterPrivateObject.Tests
             public static bool publicStaticMethodThatReturnsBooleanWithParameter(bool p1) { return p1; }
             public static void publicStaticVoidMethod() { }
             public static void publicStaticVoidMethodWithParameter(int p1) { }
+            private static bool privateStaticProperty { get; set; }
+            public static bool publicStaticProperty { get; set; }
         }
     }
 }

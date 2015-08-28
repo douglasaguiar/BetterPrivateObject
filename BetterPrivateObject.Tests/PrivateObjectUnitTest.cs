@@ -47,6 +47,26 @@ namespace BetterPrivateObject.Tests
         }
 
         [TestMethod]
+        public void GetPrivatePropertyValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            bool actual = subjectPO.privateProperty;
+
+            Assert.IsFalse(actual);
+        }
+
+        [TestMethod]
+        public void SetPrivatePropertyValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            subjectPO.privateProperty = true;
+
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
         public void InvokePublicMethodThatReturnsBoolean()
         {
             dynamic subjectPO = new PrivateObject<Subject>();
@@ -85,17 +105,39 @@ namespace BetterPrivateObject.Tests
 
             Assert.IsTrue(true);
         }
-    }
 
-    public class Subject
-    {
-        private bool privateMethodThatResturnsBoolean() { return true; }
-        private bool privateMethodThatReturnsBooleanWithParameter(bool p1) { return p1; }
-        private void privateVoidMethod() { }
-        private void privateVoidMethodWithParameter(int p1) { }
-        public bool publicMethodThatResturnsBoolean() { return true; }
-        public bool publicMethodThatReturnsBooleanWithParameter(bool p1) { return p1; }
-        public void publicVoidMethod() { }
-        public void publicVoidMethodWithParameter(int p1) { }
+        [TestMethod]
+        public void GetPublicPropertyValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            bool actual = subjectPO.publicProperty;
+
+            Assert.IsFalse(actual);
+        }
+
+        [TestMethod]
+        public void SetPublicPropertyValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            subjectPO.publicProperty = true;
+
+            Assert.IsTrue(true);
+        }
+
+        public class Subject
+        {
+            private bool privateMethodThatResturnsBoolean() { return true; }
+            private bool privateMethodThatReturnsBooleanWithParameter(bool p1) { return p1; }
+            private void privateVoidMethod() { }
+            private void privateVoidMethodWithParameter(int p1) { }
+            public bool publicMethodThatResturnsBoolean() { return true; }
+            public bool publicMethodThatReturnsBooleanWithParameter(bool p1) { return p1; }
+            public void publicVoidMethod() { }
+            public void publicVoidMethodWithParameter(int p1) { }
+            private bool privateProperty { get; set; }
+            public bool publicProperty { get; set; }
+        }
     }
 }

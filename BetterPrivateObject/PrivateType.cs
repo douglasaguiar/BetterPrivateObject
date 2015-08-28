@@ -31,5 +31,29 @@ namespace BetterPrivateObject
             result = method.Invoke(null, args);
             return true;
         }
+
+
+        public override bool TryGetMember(GetMemberBinder binder, out object result)
+        {
+            PropertyInfo property = typeof(T).GetProperty(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+            if (property == null)
+            {
+                result = null;
+                return false;
+            }
+            result = property.GetValue(null, null);
+            return true;
+        }
+
+        public override bool TrySetMember(SetMemberBinder binder, object value)
+        {
+            PropertyInfo property = typeof(T).GetProperty(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+            if (property == null)
+            {
+                return false;
+            }
+            property.SetValue(null, value, null);
+            return true;
+        }
     }
 }
