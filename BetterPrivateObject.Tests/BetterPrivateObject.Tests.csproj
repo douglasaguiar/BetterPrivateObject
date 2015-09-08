@@ -51,7 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="PrivateObjectUnitTest.cs" />
+    <Compile Include="PrivateObjectTests.cs" />
     <Compile Include="PrivateTypeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

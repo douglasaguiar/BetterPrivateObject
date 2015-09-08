@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BetterPrivateObject.Tests
 {
     [TestClass]
-    public class PrivateObjectUnitTest
+    public class PrivateObjectTests
     {
         [TestMethod]
         public void InvokePrivateMethodThatReturnsBoolean()
