@@ -8,6 +8,7 @@ If you want to test a private method like this:
 public class Subject
 {
 	private int annoyingPrivateSum(int num1, int num2) { return num1+num2; }
+	private static int annoyingPrivateStaticSum(int num1, int num2) { return num1+num2; }
 }
 ```
 
@@ -20,6 +21,16 @@ public void TestPrivateMethod()
 	dynamic subjectPO = new PrivateObject<Subject>();
 
 	int result = subjectPO.annoyingPrivateSum(1, 1);
+
+	Assert.AreEqual(2, result);
+}
+
+[TestMethod]
+public void TestPrivateStaticMethod()
+{
+	dynamic subjectPO = new PrivateType<Subject>();
+
+	int result = subjectPO.annoyingPrivateStaticSum(1, 1);
 
 	Assert.AreEqual(2, result);
 }
