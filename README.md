@@ -1,5 +1,9 @@
 # BetterPrivateObject
 
+[![Nuget count](http://img.shields.io/nuget/v/BetterPrivateObject.svg)](https://www.nuget.org/packages/BetterPrivateObject/)
+[![Nuget downloads](http://img.shields.io/nuget/dt/BetterPrivateObject.svg)](https://www.nuget.org/packages/BetterPrivateObject/)
+[![Issues open](http://img.shields.io/github/issues-raw/douglasaguiar/BetterPrivateObject.svg)](https://huboard.com/douglasaguiar/BetterPrivateObject/)
+
 Better private object, using dynamic object. Yes, it's very cool!
 
 If you want to test a private method like this:
