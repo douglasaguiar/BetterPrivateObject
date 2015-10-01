@@ -126,8 +126,90 @@ namespace BetterPrivateObject.Tests
             Assert.IsTrue(true);
         }
 
+        [TestMethod]
+        public void GetPublicFieldValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            int actual = subjectPO.publicField;
+
+            Assert.AreEqual(Subject.FieldInitialValue, actual);
+        }
+
+        [TestMethod]
+        public void SetPublicFieldValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            const int newValue = 5;
+            subjectPO.publicField = newValue;
+            int actual = subjectPO.publicField;
+
+            Assert.AreEqual(newValue, actual);
+        }
+
+        [TestMethod]
+        public void GetPrivateFieldValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            int actual = subjectPO.privateField;
+
+            Assert.AreEqual(Subject.FieldInitialValue, actual);
+        }
+
+        [TestMethod]
+        public void SetPrivateFieldValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            const int newValue = 5;
+            subjectPO.privateField = newValue;
+            int actual = subjectPO.privateField;
+
+            Assert.AreEqual(newValue, actual);
+        }
+
+        [TestMethod]
+        public void GetPrivateReadonlyFieldValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            int actual = subjectPO.privateReadonlyField;
+
+            Assert.AreEqual(Subject.FieldInitialValue, actual);
+        }
+
+        /// <summary>
+        /// Since reflection allows setting readonly fields, why shouldn't we?
+        /// </summary>
+        [TestMethod]
+        public void SetPrivateReadonlyFieldValue()
+        {
+            dynamic subjectPO = new PrivateObject<Subject>();
+
+            const int newValue = 5;
+            subjectPO.privateReadonlyField = newValue;
+            int actual = subjectPO.privateReadonlyField;
+
+            Assert.AreEqual(newValue, actual);
+        }
+
         public class Subject
         {
+            public const int FieldInitialValue = 42;
+
+            public int publicField;
+            private int privateField;
+            private readonly int privateReadonlyField;
+
+            public Subject()
+            {
+                publicField = FieldInitialValue;
+                privateField = FieldInitialValue;
+                privateReadonlyField = FieldInitialValue;
+            }
+
             private bool privateMethodThatResturnsBoolean() { return true; }
             private bool privateMethodThatReturnsBooleanWithParameter(bool p1) { return p1; }
             private void privateVoidMethod() { }
