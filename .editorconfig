@@ -1,0 +1,9 @@
+# Editor config for project, supported by many editors.
+# See http://editorconfig.org/
+# Visual Studio Extension: https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328
+
+[*.cs]
+tab_width=4
+indent_style=space
+indent_size=4
+trim_trailing_whitespace=true
