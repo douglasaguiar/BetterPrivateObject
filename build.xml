@@ -22,7 +22,7 @@
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
-    <Exec Command="mstest /nologo /detail:errormessage /testcontainer:$(MSBuildProjectDirectory)\BetterPrivateObject.Tests\bin\Debug\BetterPrivateObject.Tests.dll"/>
+    <Exec Command="mstest /nologo /detail:errormessage /testcontainer:$(MSBuildProjectDirectory)\BetterPrivateObject.Tests\bin\Release\BetterPrivateObject.Tests.dll"/>
   </Target>
   
   <Target Name="NuPack" DependsOnTargets="Rebuild">
