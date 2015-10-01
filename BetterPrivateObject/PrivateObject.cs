@@ -35,16 +35,27 @@ namespace BetterPrivateObject
 			result = method.Invoke(Container, args);
 			return true;
 		}
-        
+
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
             PropertyInfo property = typeof(T).GetProperty(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             if (property == null)
             {
-                result = null;
-                return false;
+                FieldInfo field = typeof(T).GetField(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (field == null)
+                {
+                    result = null;
+                    return false;
+                }
+                else
+                {
+                    result = field.GetValue(Container);
+                }
             }
-            result = property.GetValue(Container, null);
+            else
+            {
+                result = property.GetValue(Container, null);
+            }
             return true;
         }
 
@@ -53,9 +64,20 @@ namespace BetterPrivateObject
             PropertyInfo property = typeof(T).GetProperty(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             if (property == null)
             {
-                return false;
+                FieldInfo field = typeof(T).GetField(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (field == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    field.SetValue(Container, value);
+                }
             }
-            property.SetValue(Container, value, null);
+            else
+            {
+                property.SetValue(Container, value, null);
+            }
             return true;
         }
     }

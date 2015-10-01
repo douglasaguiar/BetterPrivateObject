@@ -38,10 +38,21 @@ namespace BetterPrivateObject
             PropertyInfo property = typeof(T).GetProperty(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
             if (property == null)
             {
-                result = null;
-                return false;
+                FieldInfo field = typeof(T).GetField(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+                if (field == null)
+                {
+                    result = null;
+                    return false;
+                }
+                else
+                {
+                    result = field.GetValue(null);
+                }
             }
-            result = property.GetValue(null, null);
+            else
+            {
+                result = property.GetValue(null, null);
+            }
             return true;
         }
 
@@ -50,9 +61,20 @@ namespace BetterPrivateObject
             PropertyInfo property = typeof(T).GetProperty(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
             if (property == null)
             {
-                return false;
+                FieldInfo field = typeof(T).GetField(binder.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+                if (field == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    field.SetValue(null, value);
+                }
             }
-            property.SetValue(null, value, null);
+            else
+            {
+                property.SetValue(null, value, null);
+            }
             return true;
         }
     }

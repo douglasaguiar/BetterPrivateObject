@@ -110,7 +110,7 @@ namespace BetterPrivateObject.Tests
 
             Assert.IsTrue(true);
         }
-        
+
         [TestMethod]
         public void GetPublicStaticPropertyValue()
         {
@@ -131,8 +131,90 @@ namespace BetterPrivateObject.Tests
             Assert.IsTrue(true);
         }
 
+        [TestMethod]
+        public void GetPublicStaticFieldValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            int actual = subjectPO.publicStaticField;
+
+            Assert.AreEqual(Subject.FieldInitialValue, actual);
+        }
+
+        [TestMethod]
+        public void SetPublicStaticFieldValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            const int newValue = 5;
+            subjectPO.publicStaticField = newValue;
+            int actual = subjectPO.publicStaticField;
+
+            Assert.AreEqual(newValue, actual);
+        }
+
+        [TestMethod]
+        public void GetPrivateStaticFieldValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            int actual = subjectPO.privateStaticField;
+
+            Assert.AreEqual(Subject.FieldInitialValue, actual);
+        }
+
+        [TestMethod]
+        public void SetPrivateStaticFieldValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            const int newValue = 5;
+            subjectPO.privateStaticField = newValue;
+            int actual = subjectPO.privateStaticField;
+
+            Assert.AreEqual(newValue, actual);
+        }
+
+        [TestMethod]
+        public void GetPrivateStaticReadonlyFieldValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            int actual = subjectPO.privateStaticReadonlyField;
+
+            Assert.AreEqual(Subject.FieldInitialValue, actual);
+        }
+
+        /// <summary>
+        /// Since reflection allows setting readonly fields, why shouldn't we?
+        /// </summary>
+        [TestMethod]
+        public void SetPrivateStaticReadonlyFieldValue()
+        {
+            dynamic subjectPO = new PrivateType<Subject>();
+
+            const int newValue = 5;
+            subjectPO.privateStaticReadonlyField = newValue;
+            int actual = subjectPO.privateStaticReadonlyField;
+
+            Assert.AreEqual(newValue, actual);
+        }
+
         public class Subject
         {
+            public const int FieldInitialValue = 42;
+
+            public static int publicStaticField;
+            private static int privateStaticField;
+            private static readonly int privateStaticReadonlyField;
+
+            static Subject()
+            {
+                publicStaticField = FieldInitialValue;
+                privateStaticField = FieldInitialValue;
+                privateStaticReadonlyField = FieldInitialValue;
+            }
+
             private static bool privateStaticMethodThatResturnsBoolean() { return true; }
             private static bool privateStaticMethodThatReturnsBooleanWithParameter(bool p1) { return p1; }
             private static void privateStaticVoidMethod() { }
