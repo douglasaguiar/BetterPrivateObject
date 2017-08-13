@@ -6,5 +6,7 @@ before_build:
 - dotnet restore -v Minimal --no-cache
 build_script:
 - dotnet build --configuration Release --version-suffix %APPVEYOR_BUILD_NUMBER%
+after_build:
+- dotnet pack src/BetterPrivateObject/BetterPrivateObject.csproj -o .\NuGet\pack\ --no-build -c Release
 test_script:
 - dotnet test test/BetterPrivateObject.Tests/BetterPrivateObject.Tests.csproj --configuration Release --no-build
