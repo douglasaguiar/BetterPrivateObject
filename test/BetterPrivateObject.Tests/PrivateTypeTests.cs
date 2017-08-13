@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Xunit;
 using BetterPrivateObject;
 using System;
 using System.Collections.Generic;
@@ -8,140 +8,142 @@ using System.Threading.Tasks;
 
 namespace BetterPrivateObject.Tests
 {
-    [TestClass]
     public class PrivateTypeTests
     {
-        [TestMethod]
+        [Fact]
         public void InvokePrivateMethodThatReturnsBoolean()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             bool result = subjectPO.privateStaticMethodThatResturnsBoolean();
 
-            Assert.IsTrue(result);
+            Assert.True(result);
         }
 
-        [TestMethod]
+        [Fact]
         public void InvokePrivateMethodThatReturnsBooleanWithParameter()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             bool result = subjectPO.privateStaticMethodThatReturnsBooleanWithParameter(true);
 
-            Assert.IsTrue(result);
+            Assert.True(result);
         }
 
-        [TestMethod]
+        [Fact]
         public void InvokePrivateVoidMethod()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             subjectPO.privateStaticVoidMethod();
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
 
-        [TestMethod]
+        [Fact]
         public void InvokePrivateVoidMethodWithParameter()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             subjectPO.privateStaticVoidMethodWithParameter(1);
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetPrivateStaticPropertyValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
+            subjectPO.privateStaticProperty = false;
             bool actual = subjectPO.privateStaticProperty;
 
-            Assert.IsFalse(actual);
+            Assert.False(actual);
         }
 
-        [TestMethod]
+        [Fact]
         public void SetPrivateStaticPropertyValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             subjectPO.privateStaticProperty = true;
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
 
-        [TestMethod]
+        [Fact]
         public void InvokePublicMethodThatReturnsBoolean()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             bool result = subjectPO.publicStaticMethodThatResturnsBoolean();
 
-            Assert.IsTrue(result);
+            Assert.True(result);
         }
 
-        [TestMethod]
+        [Fact]
         public void InvokePublicMethodThatReturnsBooleanWithParameter()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             bool result = subjectPO.publicStaticMethodThatReturnsBooleanWithParameter(true);
 
-            Assert.IsTrue(result);
+            Assert.True(result);
         }
 
-        [TestMethod]
+        [Fact]
         public void InvokePublicVoidMethod()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             subjectPO.publicStaticVoidMethod();
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
 
-        [TestMethod]
+        [Fact]
         public void InvokePublicVoidMethodWithParameter()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             subjectPO.publicStaticVoidMethodWithParameter(1);
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetPublicStaticPropertyValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
+            subjectPO.publicStaticProperty = false;
+
             bool actual = subjectPO.publicStaticProperty;
 
-            Assert.IsFalse(actual);
+            Assert.False(actual);
         }
 
-        [TestMethod]
+        [Fact]
         public void SetPublicStaticPropertyValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             subjectPO.publicStaticProperty = true;
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetPublicStaticFieldValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             int actual = subjectPO.publicStaticField;
 
-            Assert.AreEqual(Subject.FieldInitialValue, actual);
+            Assert.Equal(Subject.FieldInitialValue, actual);
         }
 
-        [TestMethod]
+        [Fact]
         public void SetPublicStaticFieldValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
@@ -150,20 +152,20 @@ namespace BetterPrivateObject.Tests
             subjectPO.publicStaticField = newValue;
             int actual = subjectPO.publicStaticField;
 
-            Assert.AreEqual(newValue, actual);
+            Assert.Equal(newValue, actual);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetPrivateStaticFieldValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
             int actual = subjectPO.privateStaticField;
 
-            Assert.AreEqual(Subject.FieldInitialValue, actual);
+            Assert.Equal(Subject.FieldInitialValue, actual);
         }
 
-        [TestMethod]
+        [Fact]
         public void SetPrivateStaticFieldValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
@@ -172,23 +174,25 @@ namespace BetterPrivateObject.Tests
             subjectPO.privateStaticField = newValue;
             int actual = subjectPO.privateStaticField;
 
-            Assert.AreEqual(newValue, actual);
+            Assert.Equal(newValue, actual);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetPrivateStaticReadonlyFieldValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
 
+            subjectPO.privateStaticReadonlyField = Subject.FieldInitialValue;
+
             int actual = subjectPO.privateStaticReadonlyField;
 
-            Assert.AreEqual(Subject.FieldInitialValue, actual);
+            Assert.Equal(Subject.FieldInitialValue, actual);
         }
 
         /// <summary>
         /// Since reflection allows setting readonly fields, why shouldn't we?
         /// </summary>
-        [TestMethod]
+        [Fact]
         public void SetPrivateStaticReadonlyFieldValue()
         {
             dynamic subjectPO = new PrivateType<Subject>();
@@ -197,7 +201,7 @@ namespace BetterPrivateObject.Tests
             subjectPO.privateStaticReadonlyField = newValue;
             int actual = subjectPO.privateStaticReadonlyField;
 
-            Assert.AreEqual(newValue, actual);
+            Assert.Equal(newValue, actual);
         }
 
         public class Subject
