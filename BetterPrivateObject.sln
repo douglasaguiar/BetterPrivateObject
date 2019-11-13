@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterPrivateObject", "src\BetterPrivateObject\BetterPrivateObject.csproj", "{1664BA15-D591-4E30-B874-B5CC39186C92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterPrivateObject", "src\BetterPrivateObject\BetterPrivateObject.csproj", "{1664BA15-D591-4E30-B874-B5CC39186C92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterPrivateObject.Tests", "test\BetterPrivateObject.Tests\BetterPrivateObject.Tests.csproj", "{D8F5F415-0B3A-4609-B855-4655A9B4C034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetterPrivateObject.Tests", "test\BetterPrivateObject.Tests\BetterPrivateObject.Tests.csproj", "{D8F5F415-0B3A-4609-B855-4655A9B4C034}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Itens", "Solution Itens", "{E797422B-B9D0-40E0-B0BB-B5D08A38DC43}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,8 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Itens", "Solution 
 		.hgignore = .hgignore
 		appveyor.yml = appveyor.yml
 		authors.txt = authors.txt
-		build.cmd = build.cmd
-		build.xml = build.xml
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -34,5 +33,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8F6C615-5CCD-4508-B70D-53FD087B6A36}
 	EndGlobalSection
 EndGlobal
